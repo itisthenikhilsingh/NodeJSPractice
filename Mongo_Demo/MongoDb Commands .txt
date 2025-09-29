@@ -1,0 +1,153 @@
+Create the following collection in MongoDB
+(1) Food Item
+name
+calories
+brand (Haldiram, BTW etc..)
+category (snack, juices, meals )
+price
+(2) Restorant
+name
+year (establishment)
+location
+contact
+email
+nos of days open
+city
+category (snack juices, meals)
+serving (Dining / Takeaway / Buffet)
+1) Insert 5 records into both collections (3 using insertMany and 2 using insertOne)
+// Insert 3 records using insertMany
+db.FoodItem.insertMany([
+  {
+    name: "Aloo Bhujia",
+    calories: 550,
+    brand: "Haldiram",
+    category: "snack",
+    price: 50
+  },
+  {
+    name: "Orange Juice",
+    calories: 120,
+    brand: "Real",
+    category: "juices",
+    price: 30
+  },
+  {
+    name: "Rajma Chawal",
+    calories: 600,
+    brand: "BTW",
+    category: "meals",
+    price: 120
+  }
+])
+
+// Insert 2 records using insertOne
+db.FoodItem.insertOne({
+  name: "Mixed Fruit Juice",
+  calories: 140,
+  brand: "Tropicana",
+  category: "juices",
+  price: 35
+})
+
+db.FoodItem.insertOne({
+  name: "Samosa",
+  calories: 300,
+  brand: "Bikanervala",
+  category: "snack",
+  price: 20
+})
+
+
+
+2) Search and print the documents in food collection which are belonging to category- juices
+
+// Insert 3 records using insertMany
+db.Restaurant.insertMany([
+  {
+    name: "BTW",
+    year: 1991,
+    location: "Connaught Place",
+    contact: "011-22233344",
+    email: "contact@btw.in",
+    nos_of_days_open: 7,
+    city: "Delhi",
+    category: "meals",
+    serving: "Dining"
+  },
+  {
+    name: "Haldiram's",
+    year: 1982,
+    location: "Dadar",
+    contact: "022-11122233",
+    email: "info@haldiram.com",
+    nos_of_days_open: 6,
+    city: "Mumbai",
+    category: "snack",
+    serving: "Takeaway"
+  },
+  {
+    name: "Juice Junction",
+    year: 2005,
+    location: "Kormangala",
+    contact: "080-55566677",
+    email: "jj@juices.in",
+    nos_of_days_open: 7,
+    city: "Bangalore",
+    category: "juices",
+    serving: "Takeaway"
+  }
+])
+
+// Insert 2 records using insertOne
+db.Restaurant.insertOne({
+  name: "Meal Box",
+  year: 2015,
+  location: "Sector 18",
+  contact: "0120-1234567",
+  email: "hello@mealbox.com",
+  nos_of_days_open: 5,
+  city: "Noida",
+  category: "meals",
+  serving: "Buffet"
+})
+
+db.Restaurant.insertOne({
+  name: "Fruit Punch",
+  year: 2018,
+  location: "Saket",
+  contact: "011-99887766",
+  email: "fruitpunch@juicebar.com",
+  nos_of_days_open: 6,
+  city: "Delhi",
+  category: "juices",
+  serving: "Dining"
+})
+
+db.FoodItem.find({ category: "juices" }).pretty()
+
+3) Search and print the documents in restaureny collection which are belonging to city Delhi & Mumbai
+
+db.Restaurant.find({ city: { $in: ["Delhi", "Mumbai"] } }).pretty()
+
+4) Update the price of any food item belonging to category snacks
+
+db.FoodItem.updateOne(
+  { category: "snack" },
+  { $set: { price: 60 } }
+)
+
+
+5) Update the location of restaurent belonging to city Delhi
+
+db.Restaurant.updateMany(
+  { city: "Delhi" },
+  { $set: { location: "New Delhi Central" } }
+)
+
+
+6) Delete the food item which is beloning to brand Haldiram and also delete all the food items which are belonging to category juices?
+
+db.FoodItem.deleteOne({ brand: "Haldiram" })
+
+db.FoodItem.deleteMany({ category: "juices" })

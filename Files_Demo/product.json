@@ -1,0 +1,10 @@
+
+[
+    {"name": "ThinkPad", "city": "Morrisville"},
+    {"name": "Xperia", "city": "Tokyo"},
+    {"name": "Surface", "city": "Redmond"},
+    {"name": "Mi", "city": "Beijing"},
+    {"name": "OnePlus", "city": "Shenzhen"},
+    {"name": "Motorola", "city": "Chicago"},
+    {"name": "Nokia", "city": "Espoo"}
+]

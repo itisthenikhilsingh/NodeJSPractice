@@ -1,0 +1,3 @@
+GET -/signup - Fri, 26 Sep 2025 10:40:44 GMT - 294.943 ms
+POST -/register - Fri, 26 Sep 2025 10:40:55 GMT - 3.331 ms
+GET -/ - Fri, 26 Sep 2025 10:40:57 GMT - 14.642 ms
