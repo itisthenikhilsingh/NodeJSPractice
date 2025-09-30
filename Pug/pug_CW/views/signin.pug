@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .card.form
+    h2 Sign In
+    form(method='POST', action='/signin')
+      .form-row
+        label(for='email') Email Id
+        input#email(type='email', name='email', required)
+      .form-row
+        label(for='password') Password
+        input#password(type='password', name='password', required)
+      .btn-row
+        button.button(type='submit') Sign In
+        a.button.secondary(href='/') Cancel

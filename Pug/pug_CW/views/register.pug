@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .card.form
+    h2 New User Account Creation
+    if error
+      .alert= error
+    form(method='POST', action='/register')
+      .form-row
+        label(for='username') Username
+        input#username(type='text', name='username', required, value=form && form.username)
+      .form-row
+        label(for='email') Email Id
+        input#email(type='email', name='email', required, value=form && form.email)
+      .form-row
+        label(for='password') Password
+        input#password(type='password', name='password', required)
+      .btn-row
+        button.button(type='submit') Register
+        a.button.secondary(href='/') Cancel
